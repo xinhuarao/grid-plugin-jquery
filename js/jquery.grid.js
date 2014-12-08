@@ -98,7 +98,13 @@
                         +"<select><option value='5'>5</option><option value='10' selected>10</option><option value='15'>15</option><option value='20'>20</option><option value='50'>50</option><option value='100'>100</option>"
                         +"</select></div>");
             pager.append("<div class='tb-pg-sptr'>");
-            pager.append("<div class='tb-pg-page'>");
+            pager.append("<div class='tb-pg-page'>"
+                        +"<span>第</span><span><input type='text' class='page-number'></span><span>页</span>"
+                        +"<span>/共</span><span class='tb-total-size'>1</span><span>页</span>");
+            pager.append("<div class='tb-pg-sptr'>");
+            pager.append("<div class='tb-pg-btn'><a class='tb-pg-fst'></a><a class='tb-pg-pre' href='#'></a><a class='tb-pg-next'></a><a class='tb-pg-last'></a>");
+            pager.append("<div class='tb-pg-sptr'>");
+            pager.append('<div class="tb-tlt-num">共<span>0</span>条记录</div>');
             this.$btable.after(this.$pager);
         }
     };

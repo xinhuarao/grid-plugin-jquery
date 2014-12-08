@@ -58,6 +58,26 @@ $(function(){
                 age: "12",
                 gender: "male",
                 addr: "hangzhou"
+            },{
+                name: "xxx",
+                age: "12",
+                gender: "male",
+                addr: "hangzhou"
+            },{
+                name: "xxx",
+                age: "12",
+                gender: "male",
+                addr: "hangzhou"
+            },{
+                name: "xxx",
+                age: "12",
+                gender: "male",
+                addr: "hangzhou"
+            },{
+                name: "xxx",
+                age: "12",
+                gender: "male",
+                addr: "hangzhou"
             }
         ]
     });

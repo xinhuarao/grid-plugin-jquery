@@ -1,6 +1,12 @@
 html,body{
     padding: 0;
     margin: 0;
+    font-family:"Microsoft Yahei"
+}
+*,*:before,*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 .container {
     margin: auto;
@@ -44,18 +50,114 @@ table {
     background-color: #64ADEC !important;
 }
 .tb-pager {
-    width: 951px;
-    height: 22px;
+    width: 959px;
+    height: 29px;
     padding: 3px;
     border: 1px solid #999;
     border-top:0;
+    font-size: 12px;
 }
 .tb-page-select {
+    padding-left: 5px;
+    padding-right: 5px;
     float: left;
 }
 .tb-pg-sptr {
     height: 24px;
     border-left: 1px solid #ccc;
-    margin: -1px 0 0 10px;
+    margin: -1px 0 0 0;
+    float: left;
+}
+.tb-pg-page {
+    padding-left: 5px;
+    padding-right: 5px;
+    float: left;
+}
+.page-number {
+    width: 24px;
+}
+.tb-pg-btn {
+    width: 100px;
+    height: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    float: left;
+}
+.tb-pg-fst {
+    position: relative;
+    cursor: pointer;
+}
+.tb-pg-fst:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    height: 15px;
+    border: 1px solid #428BCA;
+}
+.tb-pg-fst:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: -5px;
+    border: 7px solid #428BCA;
+    border-top: 7px solid transparent;
+    border-left: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+}
+.tb-pg-pre {
+    position: relative;
+    cursor: pointer;
+/*     pointer-events: none; */
+}
+.tb-pg-pre:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 9px;
+    border: 7px solid #428BCA;
+    border-top: 7px solid transparent;
+    border-left: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+}
+.tb-pg-next {
+    position: relative;
+    cursor: pointer;
+}
+.tb-pg-next:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 59px;
+    border: 7px solid #428BCA;
+    border-top: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+}
+.tb-pg-last {
+    position: relative;
+    cursor: pointer;
+}
+.tb-pg-last:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 86px;
+    height: 15px;
+    border: 1px solid #428BCA;
+}
+.tb-pg-last:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 79px;
+    border: 7px solid #428BCA;
+    border-top: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+}
+.tb-tlt-num {
+    margin-left: 5px;
+    margin-top: 5px;
     float: left;
 }
