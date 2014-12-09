@@ -1,5 +1,5 @@
 $(function(){
-    $(".grid").grid({
+   $(".grid").grid({
         width: "100%",
         headHeight: "30",
         columns:[

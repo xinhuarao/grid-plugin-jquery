@@ -84,6 +84,9 @@ table {
     padding-top: 3px;
     float: left;
 }
+/* .tb-pg-btn>a:before {
+    pointer-events: none;
+} */
 .tb-pg-fst {
     position: relative;
     cursor: pointer;

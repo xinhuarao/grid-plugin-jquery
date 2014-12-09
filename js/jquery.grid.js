@@ -5,7 +5,7 @@
         this.$btable = $("<table class='tboder'>");
         this.$bhead = $("<thead>");
         this.$bbody = $("<tbody>");
-        this.list = [];
+        this.list = this.options.list;
         this._init();
     }
     Grid.prototype = {
@@ -105,7 +105,70 @@
             pager.append("<div class='tb-pg-btn'><a class='tb-pg-fst'></a><a class='tb-pg-pre' href='#'></a><a class='tb-pg-next'></a><a class='tb-pg-last'></a>");
             pager.append("<div class='tb-pg-sptr'>");
             pager.append('<div class="tb-tlt-num">共<span>0</span>条记录</div>');
+            this.$currentPage = pager.find(".page-number");
+            this.$pageSize = pager.find("select");
+            this.$totalNum = pager.find(".tb-tlt-num>span");
+            this.$totalSize = pager.find(".tb-total-size");
             this.$btable.after(this.$pager);
+            this._refreshPager();
+        },
+        _refreshPager: function(){
+        	var _this = this;
+        	function init() {
+        		if (_this.options.pagination) {
+					_this.total = _this.list.length;
+					_this.totalSize = Math.ceil(_this.total/_this.pageSize);
+					_this.currentPage = 1;
+					_this.$totalSize.text(_this.totalSize||1);
+					_this.$totalNum.text(_this.total);
+					_this.$currentPage.val(_this.currentPage);
+        		}
+        	}
+        	init();
+			_this.$pageSize.on("change",function(e){
+				_this.pageSize = $(this).val();
+				$(".tboder").find("tbody").eq(0).empty();
+				_this._generateRow(_this.list.slice(0,_this.pageSize),_this.options.columns);
+				init();
+			});
+			_this._refreshPagerBtn();
+        },
+        //前进，后退按钮事件
+        _refreshPagerBtn: function() {
+        	var _this = this;
+        	this.$pager.on("click",".tb-pg-fst",function(e){
+        		e.preventDefault();
+				_this.currentPage = 1;
+				_this._clickBtn();
+        	});
+        	this.$pager.on("click",".tb-pg-pre",function(e){
+        		e.preventDefault();
+        		if (_this.currentPage == 1) {
+        			return;
+        		}
+        		_this.currentPage--;
+        		_this._clickBtn();
+        		console.log(_this.currentPage);
+        	});
+        	this.$pager.on("click",".tb-pg-next",function(e){
+        		e.preventDefault();
+        		if (_this.currentPage == _this.totalSize) {
+        			return;
+        		}
+        		_this.currentPage++;
+        		_this._clickBtn();
+        	});
+        	this.$pager.on("click",".tb-pg-last",function(e){
+        		e.preventDefault();
+        		_this.currentPage = _this.totalSize;
+        		_this._clickBtn();
+        	});
+        },
+        _clickBtn: function() {
+        	var _this = this;
+        	$(".tboder").find("tbody").eq(0).empty();
+			_this._generateRow(_this.list.slice((_this.currentPage-1)*_this.pageSize,(_this.currentPage)*_this.pageSize),_this.options.columns);
+			_this.$currentPage.val(_this.currentPage);
         }
     };
     $.fn.grid = function(opts){
@@ -121,6 +184,7 @@
         width:"200",
         columns:[],
         pageSize: 10,
-        selectOnCheck: true
+        selectOnCheck: true,
+        pagination: true
     };
 })(jQuery);
