@@ -21,7 +21,8 @@
             this._initPager();
             this._addEvent();
             this._generateTablehead(this.options.columns);
-            this._generateRow(this.options.list,this.options.columns);
+            //this._generateRow(this.options.list,this.options.columns);
+            this._clickBtn();
         },
         //生成表格头
         _generateTablehead:function(columns){
